@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 import '../config';
 import './components.scss';
-import Notify from './notify';
+import {Notify} from './notify';
 
 export default function Logout() {
     const history = useHistory();

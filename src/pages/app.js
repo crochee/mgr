@@ -8,6 +8,8 @@ export default function App() {
         <h1>欢迎来到个人开发主页</h1>
         <Link to="/login">登录</Link>
         <br />
+        <Link to="/register">注册</Link>
+        <br />
         <Link to="/home">首页</Link>
         <br />
     </div>

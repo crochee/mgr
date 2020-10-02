@@ -7,10 +7,22 @@
     }
 }
 
-.ant-form.login-form {
-    width: 300px;
-    margin: 100px auto 0;
+.ant-form.form {
+    width: 500px;
+    margin: 100px auto 0px;
+    div {
+        display: inline-block;
+        width: 90%;
+        &.title {
+            display: inline-block;
+            width: 10%;
+        }
+    }
     button {
-        width: 100%;
+        display: inline-block;
+        width: 50%;
+        &.register-button {
+            width: 100%;
+        }
     }
 }
