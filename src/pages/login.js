@@ -38,6 +38,7 @@ export default function Login() {
                         if (response.status === 200) {
                             response.json().then(function (data) {
                                 localStorage.setItem('token', data.token);
+                                localStorage.setItem('email', email);
                             })
                             history.push('/home');
                             return

@@ -10,7 +10,5 @@ export default function App() {
         <br />
         <Link to="/register">注册</Link>
         <br />
-        <Link to="/home">首页</Link>
-        <br />
     </div>
 }

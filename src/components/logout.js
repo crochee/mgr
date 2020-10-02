@@ -3,13 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
 import '../config';
 import './components.scss';
-import {Notify} from './notify';
+import { Notify } from './notify';
 
 export default function Logout() {
     const history = useHistory();
-    const email = '';
     return <Button className="logout" type="primary" onClick={() => {
-        logout(email).then(function (response) {
+        logout(localStorage.getItem('email')).then(function (response) {
             if (response.status === 500) {
                 response.json().then(function (data) {
                     //获取请求的返回字段
@@ -18,7 +17,8 @@ export default function Logout() {
                 return
             }
             localStorage.removeItem('token');
-            history('/');
+            localStorage.removeItem('email');
+            history.push('/');
         })
     }}>登出</Button>
 }
