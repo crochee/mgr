@@ -1,29 +1,34 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'antd';
-import axios from 'axios';
-
+import '../config';
+import './components.scss';
+import Notify from './notify';
 
 export default function Logout() {
     const history = useHistory();
     const email = '';
     return <Button className="logout" type="primary" onClick={() => {
-        logout(email).then((response) => {
-            history('/');
-            // 成功则跳转
+        logout(email).then(function (response) {
             if (response.status === 500) {
-                console.log(response.data);
+                response.json().then(function (data) {
+                    //获取请求的返回字段
+                    Notify(data.message);
+                })
+                return
             }
-        }).catch((err) => {
-            console.log(err);
+            localStorage.removeItem('token');
+            history('/');
         })
     }}>登出</Button>
 }
 
 function logout(email) {
-    return axios.delete("/user/logout", {
-        data: {
-            email: email,
-        }
+    const param = {
+        email: email,
+    };
+    return fetch(global.config.consoleUrl + "/user/logout", {
+        body: JSON.stringify(param),
+        method: 'DELETE',
     })
 }

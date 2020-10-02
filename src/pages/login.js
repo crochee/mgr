@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
-import axios from 'axios';
+import '../config';
+import Notify from '../components/notify';
 
 const FormItem = Form.Item;
 
@@ -22,16 +23,23 @@ export default function Login() {
         </FormItem>
         <label>{email}  {pwd}</label>
         <FormItem>
-            <Button type="primary" onClick={() => {
+            <Button type="primary" onClick={function () {
                 login(email, pwd).then((response) => {
                     // 成功则跳转
                     if (response.status === 200) {
-                        console.log(response.data.token);
+                        console.log(response);
+                        response.json().then(function (data) {
+                            console.log(data);
+                            localStorage.setItem('token', data.token);
+                        })
+                        history.push('/home');
+                        return
                     }
-                    console.log(response.data);
-                    history('/home')
-                }).catch((err) => {
-                    console.log(err);
+                    response.json().then(function (data) {
+                        //获取请求的返回字段
+                        Notify(data.message)
+                        console.log(data.message);
+                    })
                 })
             }}>登录</Button>
         </FormItem>
@@ -39,10 +47,12 @@ export default function Login() {
 }
 
 function login(email, pwd) {
-    return axios.post(global.consoleUrl + "/login", {
-        data: {
-            email: email,
-            pass_word: pwd
-        }
+    const param = {
+        email: email,
+        pass_word: pwd
+    };
+    return fetch(global.config.consoleUrl + "/user/login", {
+        body: JSON.stringify(param),
+        method: 'POST',
     })
 }
