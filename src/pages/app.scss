@@ -1,28 +1,9 @@
-.container {
+.app {
     padding-top: 10px;
     font-size: 25px;
+    height: 100vh;
     text-align: center;
     a {
         font-size: 25px;
-    }
-}
-
-.ant-form.form {
-    width: 500px;
-    margin: 100px auto 0px;
-    div {
-        display: inline-block;
-        width: 90%;
-        &.title {
-            display: inline-block;
-            width: 10%;
-        }
-    }
-    button {
-        display: inline-block;
-        width: 50%;
-        &.register-button {
-            width: 100%;
-        }
     }
 }

@@ -1,12 +1,16 @@
-import { Table } from 'antd';
+import { Table, Menu } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logout from '../components/logout';
 import './home.scss';
 import { Notify, BadRequest } from '../components/notify';
+import {
+    PieChartOutlined,
+    DesktopOutlined,
+    ContainerOutlined,
+} from '@ant-design/icons';
 
 export default function Home() {
-    const [index, setIndex] = useState(0);
     const columns = [
         {
             title: '级别',
@@ -43,17 +47,19 @@ export default function Home() {
         })
     }, []);
     return <div className="home">
-        <Logout />
-        <h1>开发主页</h1>
-        <div className="wrap">
-            <div className="nav">
-                <div className={index === 0 ? "check" : ""} onClick={function () { setIndex(0); }}>文件</div>
-                <div className={index === 1 ? "check" : ""} onClick={function () { setIndex(1); }}>日志</div>
-                <div className={index === 2 ? "check" : ""} onClick={function () { setIndex(2); }}>任务</div>
+        <Menu className="menu-div" defaultSelectedKeys={['1']} mode="inline" theme="light" inlineCollapsed={false} >
+            <Menu.Item key="1" icon={<PieChartOutlined />}>日志</Menu.Item>
+            <Menu.Item key="2" icon={<DesktopOutlined />}>文件</Menu.Item>
+            <Menu.Item key="3" icon={<ContainerOutlined />}>任务</Menu.Item>
+        </Menu>
+        <div className="home-data">
+            <Logout />
+            <h1>开发主页</h1>
+            <div className="wrap">
+                <p>数据详情</p>
+                <Table bordered columns={columns} dataSource={data} scroll={{ x: 1300 }} rowKey={record => record.time} />
+                <Link to='/' className="wrap-link">首页</Link>
             </div>
-            <p>数据详情</p>
-            <Table bordered columns={columns} dataSource={data} scroll={{ x: 1500 }} rowKey={record => record.time} />
-            <Link to='/' className="wrap-link">首页</Link>
         </div>
     </div>
 }

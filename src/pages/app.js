@@ -4,7 +4,7 @@ import './app.scss';
 import 'antd/dist/antd.css';
 
 export default function App() {
-    return <div className="container">
+    return <div className="app">
         <h1>欢迎来到个人开发首页</h1>
         <Link to="/login">登录</Link>
         <br />

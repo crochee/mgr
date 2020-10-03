@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import '../config';
 import { Notify, BadRequest } from '../components/notify';
+import './login.scss';
 
 const FormItem = Form.Item;
 
