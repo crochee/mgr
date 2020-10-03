@@ -1,0 +1,39 @@
+.home {
+    height: 100vh;
+    background-color: pink;
+    h1 {
+        color: #ffffff;
+        text-align: center;
+        padding-top: 80px;
+    }
+    .wrap {
+        width: 800px;
+        border-radius: 10px;
+        background-color: white;
+        margin: 0px auto;
+        padding: 20px 20px 50px;
+        .nav {
+            border-bottom: 1px solid lightgray;
+            margin-bottom: 30px;
+            line-height: 50px;
+            div {
+                display: inline-block;
+                color: black;
+                width: 33%;
+                font-size: 20px;
+                text-align: center;
+                &.check {
+                    color: #1890ff;
+                    font-weight: bold;
+                }
+            }
+        }
+        p {
+            color: lightgray;
+        }
+        .wrap-link {
+            display: inline-block;
+            margin-top: 30px;
+        }
+    }
+}

@@ -10,7 +10,7 @@ import Detail from './pages/detail';
 export default function AppRouter() {
     return <Router>
         <Switch>
-            <Route exact path="/" component={App}></Route>
+            <Route exact path="/" component={App}> </Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/register" component={Register}></Route>
             <Route path="/home" component={Home}></Route>
